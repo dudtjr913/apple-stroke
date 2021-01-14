@@ -1,0 +1,85 @@
+@import 'default.css';
+
+html {
+  font-size: 14px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  color: rgb(29, 29, 31);
+  background: white;
+  letter-spacing: -0.05em;
+}
+
+section {
+  text-align: center;
+  padding-top: 50vh;
+}
+
+.title {
+  position: relative;
+  font-weight: bold;
+  font-size: 9vw;
+  color: white;
+  z-index: 5;
+  top: -5vh;
+}
+
+.sticky-elem {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.main-message {
+  top: 50vh;
+  color: white;
+  font-size: 3vw;
+  opacity: 0;
+}
+
+.main .pencel-logo {
+  top: 50%;
+  left: 50%;
+  width: 1000vw;
+  transform: translate3d(-10%, -50%, 0);
+}
+
+.pencel {
+  left: auto;
+  top: auto;
+}
+
+.pencel {
+  width: 3.5vw;
+  transform: rotate(-120deg);
+  right: -10%;
+  bottom: -80%;
+}
+
+.stroke-effect {
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  min-width: 850px;
+}
+
+#stroke-effct-svg path {
+  fill: none;
+  stroke: #ff0044;
+  stroke-width: 62;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1401 1401;
+  stroke-dashoffset: 1401;
+}
+
+.description {
+  width: 70vw;
+  font-size: 2rem;
+  margin: 0 auto;
+  opacity: 0;
+}
