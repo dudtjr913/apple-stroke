@@ -1,7 +1,11 @@
 (() => {
   const sceneInfo = [
     {
+      type: 'sticky',
+      scrollHeight: 0,
+      heightNum: 5,
       elem: {
+        $container: document.body.querySelector('#scene-1'),
         $pencelLogo: document.body.querySelector('.pencel-logo'),
         $messageA: document.body.querySelector('.main-message.a'),
         $messageB: document.body.querySelector('.main-message.b'),
@@ -22,7 +26,10 @@
       },
     },
     {
+      type: 'normal',
+      scrollHeight: 0,
       elem: {
+        $container: document.body.querySelector('#scene-2'),
         $description: document.body.querySelector('.description'),
       },
       value: {
@@ -32,5 +39,16 @@
     },
   ];
 
-  sceneInfo.forEach((v) => console.log(v));
+  const setSceneHeight = () => {
+    sceneInfo.forEach((scene) => {
+      if (scene.type === 'sticky') {
+        scene.scrollHeight = scene.heightNum * window.innerHeight;
+      } else {
+        scene.scrollHeight = scene.elem.$container.offsetHeight * 1.5;
+      }
+      scene.elem.$container.style.height = `${scene.scrollHeight}px`;
+    });
+  };
+
+  setSceneHeight();
 })();
