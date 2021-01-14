@@ -67,7 +67,7 @@ section {
   min-width: 850px;
 }
 
-#stroke-effct-svg path {
+#stroke-effct-svg {
   fill: none;
   stroke: #ff0044;
   stroke-width: 62;
