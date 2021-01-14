@@ -18,9 +18,9 @@
 
 - ✔ 각 section에 높이 정해주기
 
-- 스크롤 값에 따라 보이는 section을 정해주기
+- ✔ 스크롤 값에 따라 보이는 section을 정해주기
 
-  - body에 class 추가
+  - ✔ body에 id 추가
 
 - 스크롤 값에 따라 변하는 값을 return하는 함수 만들기
 
