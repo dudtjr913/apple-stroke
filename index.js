@@ -223,6 +223,6 @@
   window.addEventListener('load', () => {
     setSceneHeight();
     setCurrentBodyId();
+    window.addEventListener('scroll', scrollLoop);
   });
-  window.addEventListener('scroll', scrollLoop);
 })();
