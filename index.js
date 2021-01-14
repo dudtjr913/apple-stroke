@@ -16,7 +16,7 @@
         $strokeEffect: document.body.querySelector('#stroke-effct-svg'),
       },
       value: {
-        pencel_logo_opacity: [1, 0, {start: 0.8, end: 0.9}],
+        pencel_logo_opacity: [1, 0, {start: 0.8, end: 1}],
         pencel_logo_width_fast: [1000, 200, {start: 0, end: 0.4}],
         pencel_logo_width_slow: [200, 50, {start: 0.4, end: 0.8}],
         pencel_logo_translateX_slow: [-10, -20, {start: 0.2, end: 0.4}],
@@ -179,6 +179,21 @@
         sceneElem.$pencel.style.transform = `rotate(${pencel_rotate}deg)`;
         sceneElem.$pencel.style.right = `${pencel_right}%`;
         sceneElem.$pencel.style.bottom = `${pencel_bottom}%`;
+
+        break;
+
+      case 1:
+        const description_opacity = calculateStyleValue(
+          currentHeight,
+          sceneValue.description_opacity,
+        );
+        const description_translateY = calculateStyleValue(
+          currentHeight,
+          sceneValue.description_translateY,
+        );
+
+        sceneElem.$description.style.opacity = `${description_opacity}`;
+        sceneElem.$description.style.transform = `translate3d(0, ${description_translateY}%, 0)`;
     }
   };
 
