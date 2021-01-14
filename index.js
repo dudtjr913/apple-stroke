@@ -50,5 +50,18 @@
     });
   };
 
+  const setCurrentBodyId = () => {
+    let totalHeight = 0;
+    for (let i = 0; i < sceneInfo.length; i++) {
+      if (totalHeight + sceneInfo[i].scrollHeight <= window.pageYOffset) {
+        totalHeight += sceneInfo[i].scrollHeight;
+      } else {
+        document.body.id = `show-scene-${i + 1}`;
+        break;
+      }
+    }
+  };
+
   setSceneHeight();
+  setCurrentBodyId();
 })();

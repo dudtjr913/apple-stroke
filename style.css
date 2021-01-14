@@ -18,6 +18,10 @@ section {
   padding-top: 50vh;
 }
 
+body#show-scene-1 #scene-1 .sticky-elem {
+  display: block;
+}
+
 .title {
   position: relative;
   font-weight: bold;
@@ -32,6 +36,7 @@ section {
   left: 0;
   top: 0;
   width: 100%;
+  display: none;
 }
 
 .main-message {
