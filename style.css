@@ -40,10 +40,19 @@ body#show-scene-0 #scene-0 .sticky-elem {
 }
 
 .main-message {
-  top: 50vh;
+  top: 40vh;
   color: white;
-  font-size: 3vw;
+  font-size: 4vw;
   opacity: 0;
+  font-weight: bold;
+}
+
+.main-message.b {
+  font-size: 7vw;
+}
+
+.main-message p {
+  line-height: 1.2;
 }
 
 .main .pencel-logo {

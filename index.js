@@ -13,7 +13,7 @@
         $messageA: document.body.querySelector('.main-message.a'),
         $messageB: document.body.querySelector('.main-message.b'),
         $pencel: document.body.querySelector('.pencel'),
-        $strokeEffect: document.body.querySelector('stroke-effct-svg'),
+        $strokeEffect: document.body.querySelector('#stroke-effct-svg'),
       },
       value: {
         pencel_logo_opacity: [1, 0, {start: 0.8, end: 0.9}],
@@ -21,14 +21,16 @@
         pencel_logo_width_slow: [200, 50, {start: 0.4, end: 0.8}],
         pencel_logo_translateX_slow: [-10, -20, {start: 0.2, end: 0.4}],
         pencel_logo_translateX_fast: [-20, -50, {start: 0.4, end: 0.8}],
-        message_a_opacity: [0, 1, {start: 0.2, end: 0.4}],
-        message_a_translateY: [20, -20, {start: 0.2, end: 0.4}],
-        message_b_opacity: [0, 1, {start: 0.4, end: 0.6}],
-        message_b_translateY: [20, -20, {start: 0.4, end: 0.6}],
-        pencel_rotate: [-120, -200, {start: 0.3, end: 0.7}],
-        pencel_right: [-10, 70, {start: 0.3, end: 0.7}],
-        pencel_bottom: [-80, 100, {start: 0.3, end: 0.7}],
-        stroke_effect_dashedoffset: [1401, -1401, {start: 0.3, end: 0.8}],
+        message_a_opacity_in: [0, 1, {start: 0.1, end: 0.2}],
+        message_a_opacity_out: [1, 0, {start: 0.3, end: 0.4}],
+        message_a_translateY: [20, 0, {start: 0.1, end: 0.2}],
+        message_b_opacity_in: [0, 1, {start: 0.4, end: 0.5}],
+        message_b_opacity_out: [1, 0, {start: 0.6, end: 0.7}],
+        pencel_rotate: [-120, -200, {start: 0.3, end: 0.8}],
+        pencel_right: [-10, 70, {start: 0.3, end: 0.8}],
+        pencel_bottom: [-80, 100, {start: 0.3, end: 0.8}],
+        stroke_effect_dashedoffset_in: [1401, 0, {start: 0.2, end: 0.4}],
+        stroke_effect_dashedoffset_out: [0, -1401, {start: 0.6, end: 0.8}],
       },
     },
     {
@@ -118,15 +120,65 @@
           currentHeight,
           sceneValue.pencel_logo_opacity,
         );
-        sceneElem.$pencelLogo.style.opacity = `${pencel_logo_opacity}`;
+        const message_a_opacity_in = calculateStyleValue(
+          currentHeight,
+          sceneValue.message_a_opacity_in,
+        );
+        const message_a_opacity_out = calculateStyleValue(
+          currentHeight,
+          sceneValue.message_a_opacity_out,
+        );
+        const message_a_translateY = calculateStyleValue(
+          currentHeight,
+          sceneValue.message_a_translateY,
+        );
+        const message_b_opacity_in = calculateStyleValue(
+          currentHeight,
+          sceneValue.message_b_opacity_in,
+        );
+        const message_b_opacity_out = calculateStyleValue(
+          currentHeight,
+          sceneValue.message_b_opacity_out,
+        );
+        const stroke_effect_dashedoffset_in = calculateStyleValue(
+          currentHeight,
+          sceneValue.stroke_effect_dashedoffset_in,
+        );
+        const stroke_effect_dashedoffset_out = calculateStyleValue(
+          currentHeight,
+          sceneValue.stroke_effect_dashedoffset_out,
+        );
+        const pencel_rotate = calculateStyleValue(currentHeight, sceneValue.pencel_rotate);
+        const pencel_bottom = calculateStyleValue(currentHeight, sceneValue.pencel_bottom);
+        const pencel_right = calculateStyleValue(currentHeight, sceneValue.pencel_right);
 
-        if (scrollRatio < 0.4) {
+        if (scrollRatio <= 0.2) {
+          sceneElem.$messageA.style.opacity = `${message_a_opacity_in}`;
+        } else {
+          sceneElem.$messageA.style.opacity = `${message_a_opacity_out}`;
+        }
+
+        if (scrollRatio <= 0.4) {
           sceneElem.$pencelLogo.style.width = `${pencel_logo_width_fast}vw`;
           sceneElem.$pencelLogo.style.transform = `translate3d(${pencel_logo_translateX_slow}%, -50%, 0)`;
+          sceneElem.$strokeEffect.style.strokeDashoffset = `${stroke_effect_dashedoffset_in}`;
         } else {
           sceneElem.$pencelLogo.style.width = `${pencel_logo_width_slow}vw`;
           sceneElem.$pencelLogo.style.transform = `translate3d(${pencel_logo_translateX_fast}%, -50%, 0)`;
+          sceneElem.$strokeEffect.style.strokeDashoffset = `${stroke_effect_dashedoffset_out}`;
         }
+
+        if (scrollRatio <= 0.6) {
+          sceneElem.$messageB.style.opacity = `${message_b_opacity_in}`;
+        } else {
+          sceneElem.$messageB.style.opacity = `${message_b_opacity_out}`;
+        }
+
+        sceneElem.$pencelLogo.style.opacity = `${pencel_logo_opacity}`;
+        sceneElem.$messageA.style.transform = `translate3d(0, ${message_a_translateY}%, 0)`;
+        sceneElem.$pencel.style.transform = `rotate(${pencel_rotate}deg)`;
+        sceneElem.$pencel.style.right = `${pencel_right}%`;
+        sceneElem.$pencel.style.bottom = `${pencel_bottom}%`;
     }
   };
 
