@@ -18,7 +18,7 @@ section {
   padding-top: 50vh;
 }
 
-body#show-scene-1 #scene-1 .sticky-elem {
+body#show-scene-0 #scene-0 .sticky-elem {
   display: block;
 }
 
@@ -84,7 +84,7 @@ body#show-scene-1 #scene-1 .sticky-elem {
 
 .description {
   width: 70vw;
-  font-size: 2rem;
+  font-size: 4vw;
   margin: 0 auto;
   opacity: 0;
 }
