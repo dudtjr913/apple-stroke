@@ -1,4 +1,7 @@
 (() => {
+  let currentScene = 1;
+  let prevScrollHeight = 0;
+
   const sceneInfo = [
     {
       type: 'sticky',
@@ -53,12 +56,29 @@
   const setCurrentBodyId = () => {
     let totalHeight = 0;
     for (let i = 0; i < sceneInfo.length; i++) {
-      if (totalHeight + sceneInfo[i].scrollHeight <= window.pageYOffset) {
-        totalHeight += sceneInfo[i].scrollHeight;
-      } else {
-        document.body.id = `show-scene-${i + 1}`;
+      totalHeight += sceneInfo[i].scrollHeight;
+      if (totalHeight >= window.pageYOffset) {
+        currentScene = i + 1;
         break;
       }
+    }
+
+    document.body.id = `show-scene-${currentScene}`;
+  };
+
+  const calculateStyleValue = (currentHeight, styleValue) => {
+    const scrollRatio = currentHeight / sceneInfo[currentScene].scrollHeight;
+    if (styleValue.length === 3) {
+      const partScrollRatio =
+        (scrollRatio - styleValue[2].start) / (styleValue[2].end - styleValue[2].start);
+      console.log(partScrollRatio);
+      if (partScrollRatio <= 0) {
+        return styleValue[0];
+      }
+      if (partScrollRatio >= 1) {
+        return styleValue[1];
+      }
+      return styleValue[0] + (styleValue[1] - styleValue[0]) * partScrollRatio;
     }
   };
 
