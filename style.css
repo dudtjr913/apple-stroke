@@ -96,4 +96,5 @@ body#show-scene-0 #scene-0 .sticky-elem {
   font-size: 4vw;
   margin: 0 auto;
   opacity: 0;
+  padding: 0 1rem;
 }
