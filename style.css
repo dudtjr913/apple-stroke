@@ -22,6 +22,57 @@ body#show-scene-0 #scene-0 .sticky-elem {
   display: block;
 }
 
+@keyframes loading-circle {
+  0% {
+    stroke-dashoffset: 156;
+  }
+  80% {
+    stroke-dashoffset: -140;
+  }
+  100% {
+    stroke-dashoffset: -156;
+  }
+}
+
+@keyframes rotate-circle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  z-index: 100;
+}
+
+.loading-container .loading {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 54px;
+  height: 54px;
+  transform: translate3d(-50%, -50%, 0);
+  animation: rotate-circle 2s infinite;
+}
+
+.loading-container .loading circle {
+  stroke-width: 4;
+  fill: transparent;
+  stroke: gray;
+  stroke-dasharray: 156;
+  animation: loading-circle 1s infinite;
+}
+
 .title {
   position: relative;
   font-weight: bold;
