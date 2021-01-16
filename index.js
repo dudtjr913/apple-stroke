@@ -220,9 +220,25 @@
     return styleValue[0] + (styleValue[1] - styleValue[0]) * partScrollRatio;
   };
 
+  const debounce = (func, ms) => {
+    let timeout;
+    return () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        func();
+      }, ms);
+    };
+  };
+
+  const reloadResize = () => {
+    return window.location.reload();
+  };
+
   window.addEventListener('load', () => {
     setSceneHeight();
     setCurrentBodyId();
     window.addEventListener('scroll', scrollLoop);
   });
+
+  window.addEventListener('resize', debounce(reloadResize, 500));
 })();
