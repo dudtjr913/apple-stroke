@@ -25,7 +25,7 @@ body#show-scene-0 #scene-0 .sticky-elem {
 .title {
   position: relative;
   font-weight: bold;
-  font-size: 9vw;
+  font-size: 12vw;
   color: white;
   z-index: 5;
   top: -5vh;
@@ -40,15 +40,15 @@ body#show-scene-0 #scene-0 .sticky-elem {
 }
 
 .main-message {
-  top: 40vh;
+  top: 45vh;
   color: white;
-  font-size: 4vw;
+  font-size: 8vw;
   opacity: 0;
   font-weight: bold;
 }
 
 .main-message.b {
-  font-size: 7vw;
+  font-size: 10vw;
 }
 
 .main-message p {
@@ -58,7 +58,7 @@ body#show-scene-0 #scene-0 .sticky-elem {
 .main .pencel-logo {
   top: 50%;
   left: 50%;
-  width: 1000vw;
+  width: 3000vw;
   transform: translate3d(-10%, -50%, 0);
 }
 
@@ -97,4 +97,19 @@ body#show-scene-0 #scene-0 .sticky-elem {
   margin: 0 auto;
   opacity: 0;
   padding: 0 1rem;
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 9vw;
+  }
+
+  .main-message {
+    top: 40vh;
+    font-size: 4vw;
+  }
+
+  .main-message.b {
+    font-size: 7vw;
+  }
 }
