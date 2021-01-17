@@ -22,6 +22,11 @@ body#show-scene-0 #scene-0 .sticky-elem {
   display: block;
 }
 
+body.before-loaded {
+  overflow: hidden;
+  background-color: white;
+}
+
 @keyframes loading-circle {
   0% {
     stroke-dashoffset: 156;
@@ -53,6 +58,7 @@ body#show-scene-0 #scene-0 .sticky-elem {
   height: 100vh;
   background-color: white;
   z-index: 100;
+  transition: 0.5s;
 }
 
 .loading-container .loading {
