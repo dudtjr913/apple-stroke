@@ -236,13 +236,15 @@
 
   window.addEventListener('load', () => {
     document.body.classList.remove('before-loaded');
-
-    document.body.querySelector('.loading-container').addEventListener('transitionend', (e) => {
-      document.body.querySelector('.container').removeChild(e.currentTarget);
-    });
-
     setSceneHeight();
     setCurrentBodyId();
+
+    document.body.querySelector('.loading-container').addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'background-color') {
+        document.body.removeChild(e.currentTarget);
+      }
+    });
+
     window.addEventListener('scroll', scrollLoop);
   });
 
